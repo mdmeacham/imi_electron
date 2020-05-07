@@ -19,3 +19,9 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw?
+/*.bz2
+
+#Electron-builder output
+/dist_electron
+
+/igel_package
