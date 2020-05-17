@@ -106,7 +106,11 @@
     
     mounted() {
         var stats = fs.stat(homedir + '/.config/IMI_Config_Changer.json', (err, stat) => {
-          if (stat && stat.isFile() && stat.length > 0) {
+          console.log("stat is", stat)
+          console.log("is file", stat.isFile())
+          console.log("is sym link", stat.isSymbolicLink())
+          console.log("size", stat.length)
+          if (stat && (stat.isFile() || stat.isSymbolicLink()) && stat.size > 0) {
 
             this.fetch_directories();
 

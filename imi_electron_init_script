@@ -13,11 +13,11 @@ echo "Starting" | $LOGGER
 
 case "$1" in
 init)
- 	chown -R user:users ${CP}/userhome /userhome/.config/IMI_Config_Changer.json
 
 	# Initial permissions
 	chown -R 0:0 "${CP}" | $LOGGER
 	chmod 755 "${MP}" | $LOGGER
+ 	chown -R user:users ${CP}/userhome /userhome/.config/IMI_Config_Changer.json
 	# Linking files and folders on proper path
 	find "${CP}" | while read LINE
 	do
@@ -27,7 +27,8 @@ init)
 			[ -d $LINE ] && DEST=$(echo "${DEST}" | sed -e "s/\/$//g") | $LOGGER
 			if [ ! -z "${DEST}" ]; then
 				ln -sv "${LINE}" "${DEST}" | $LOGGER
-			fi
+		 	chown -R user:users ${CP}/userhome /userhome/.config/IMI_Config_Changer.json
+	fi
 		fi
 	done
 ;;
